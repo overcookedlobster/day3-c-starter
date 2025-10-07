@@ -18,11 +18,7 @@
 
 int main() {
     // TODO: Implement the exercise here
-    // 1. Declare float temp = 25.5f;
-    // 2. Declare float *ptr = &temp;
-    // 3. Print original temp and &temp
-    // 4. Set *ptr = 30.0f;
-    // 5. Print new temp
+    // Hint: Remember to use & for addresses and * for dereferencing. Declare a float, point to it, print value and address, modify via pointer, print again.
 
     // Placeholder - replace with your implementation
     printf("Exercise 1: Basic Float Pointer\n");

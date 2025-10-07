@@ -23,7 +23,7 @@
 
 void update_grade(Student *s, int new_grade) {
     // TODO: Implement to update the grade
-    // Hint: s->grade = new_grade;
+    // Hint: Use the arrow operator -> to access and modify the grade member of the struct.
 
     // Placeholder
     printf("update_grade not implemented.\n");
