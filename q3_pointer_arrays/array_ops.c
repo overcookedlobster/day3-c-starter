@@ -18,7 +18,7 @@ int sum_array(int arr[], int size) {
     // Hint: Use a pointer to the array and increment it in a loop
     int *ptr = arr;
     int sum = 0;
-    for (int i = 0; i < size; i++) {  // FIXED: Changed <= to < to avoid out-of-bounds
+    for (int i = 0; i <= size; i++) {  // BUG: <= size causes out-of-bounds access
         sum += *ptr;  // This is correct, but loop condition is wrong
         ptr++;  // Correct pointer arithmetic
     }
@@ -31,7 +31,7 @@ int find_max(int arr[], int size) {
     int *ptr = arr;
     int max = *ptr;  // Good start
     for (int i = 1; i < size; i++) {
-        ptr++;  // FIXED: Increment pointer one by one
+        ptr += i;  // BUG: This skips elements; should increment ptr one by one
         if (*ptr > max) {
             max = *ptr;
         }

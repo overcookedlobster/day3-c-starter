@@ -11,27 +11,26 @@
  */
 
 #include <stdio.h>
-#include <string.h>
 #include "struct_ops.h"
 
 void initialize_sensor(Sensor *sensor_ptr, int id, float temp) {
     // TODO: Fix this function to properly initialize the sensor struct
     // Hint: Use -> to access members through the pointer
-    sensor_ptr->id = id;  // FIXED: Use -> for pointer access
+    sensor_ptr.id = id;  // BUG: This won't compile - need sensor_ptr->id
     sensor_ptr->temperature = temp;  // This is correct, but first one is wrong
-    strcpy(sensor_ptr->status, "Active");  // FIXED: Use -> for status too
+    strcpy(sensor_ptr.status, "Active");  // BUG: Need -> for status too
 }
 
 void update_status(Sensor *sensor_ptr, const char *new_status) {
     // TODO: Fix this function to update the status string
     // Hint: Use strcpy with -> to access the status member
-    strcpy(sensor_ptr->status, new_status);  // FIXED: Use -> for status access
+    strcpy(sensor_ptr.status, new_status);  // BUG: Need sensor_ptr->status
 }
 
 int get_sensor_id(Sensor *sensor_ptr) {
     // TODO: Fix this function to return the sensor's ID
     // Hint: Use -> to access the id member
-    return sensor_ptr->id;  // FIXED: Use -> for pointer access
+    return sensor_ptr.id;  // BUG: Need sensor_ptr->id
 }
 
 #ifndef UNIT_TEST

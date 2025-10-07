@@ -16,13 +16,13 @@
 void update_temperature(float *temp_ptr, float new_value) {
     // TODO: Fix this function to actually update the value at temp_ptr
     // Hint: You need to dereference the pointer to modify the value it points to
-    *temp_ptr = new_value;  // FIXED: Dereference to modify the original value
+    temp_ptr = &new_value;  // BUG: This just changes where temp_ptr points, not the value
 }
 
 int calculate_double(int *value_ptr) {
     // TODO: Fix this function to return double the value pointed to by value_ptr
     // Hint: Dereference value_ptr first, then multiply by 2
-    return (*value_ptr) * 2;  // FIXED: Dereference before multiplying
+    return value_ptr * 2;  // BUG: Can't multiply a pointer by 2, need to dereference first
 }
 
 #ifndef UNIT_TEST
