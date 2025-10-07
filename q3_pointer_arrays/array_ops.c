@@ -14,13 +14,12 @@
 #include "array_ops.h"
 
 int sum_array(int arr[], int size) {
-    // TODO: Fix this function to correctly sum the array using pointer arithmetic
-    // Hint: Use a pointer to the array and increment it in a loop
+    // TODO: Debug this function using GDB - it may access invalid memory or give wrong sums
     int *ptr = arr;
     int sum = 0;
-    for (int i = 0; i <= size; i++) {  // BUG: <= size causes out-of-bounds access
-        sum += *ptr;  // This is correct, but loop condition is wrong
-        ptr++;  // Correct pointer arithmetic
+    for (int i = 0; i <= size; i++) {
+        sum += *ptr;
+        ptr++;
     }
     return sum;
 }

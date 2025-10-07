@@ -14,19 +14,16 @@
 #include "swap.h"
 
 void swap_values(int a, int b) {
-    // TODO: Fix this function to actually swap the values of a and b
-    // Hint: Change the parameters to pointers: int *a, int *b
-    // Then use a temp variable and dereference: int temp = *a; *a = *b; *b = temp;
+    // TODO: Debug this function using GDB - it doesn't swap values correctly
     int temp = a;
     a = b;
-    b = temp;  // BUG: This only swaps local copies, not the original variables
+    b = temp;
 }
 
 void increment_both(int x, int y) {
-    // TODO: Fix this function to increment both x and y by 1
-    // Hint: Use pointers to modify the original values
-    x++;  // BUG: Only increments local copy
-    y++;  // BUG: Only increments local copy
+    // TODO: Debug this function using GDB - it doesn't increment correctly
+    x++;
+    y++;
 }
 
 #ifndef UNIT_TEST

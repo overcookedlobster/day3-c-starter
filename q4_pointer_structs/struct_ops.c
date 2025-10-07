@@ -14,11 +14,10 @@
 #include "struct_ops.h"
 
 void initialize_sensor(Sensor *sensor_ptr, int id, float temp) {
-    // TODO: Fix this function to properly initialize the sensor struct
-    // Hint: Use -> to access members through the pointer
-    sensor_ptr.id = id;  // BUG: This won't compile - need sensor_ptr->id
-    sensor_ptr->temperature = temp;  // This is correct, but first one is wrong
-    strcpy(sensor_ptr.status, "Active");  // BUG: Need -> for status too
+    // TODO: Debug this function using GDB - it doesn't initialize correctly
+    sensor_ptr.id = id;
+    sensor_ptr->temperature = temp;
+    strcpy(sensor_ptr.status, "Active");
 }
 
 void update_status(Sensor *sensor_ptr, const char *new_status) {
