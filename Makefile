@@ -1,49 +1,44 @@
-# Makefile for Day 3 C Pointers Exercises Autograder
+# Makefile for Day 3 C Pointers Implementation Exercises
 
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -g
-TARGETS = q1_basic_pointers/pointers q2_pointer_functions/swap q3_pointer_arrays/array_ops q4_pointer_structs/struct_ops
-TESTS = tests/test_basic_pointers tests/test_pointer_functions tests/test_pointer_arrays tests/test_pointer_structs
+TARGETS = q1_basic_float_pointer/basic q2_swap_function/swap q3_sum_array/sum_array q4_student_struct/student q5_dynamic_array/dynamic
 
-all: $(TARGETS) $(TESTS)
-	@echo "✓ All Day 3 pointer exercises and tests compiled successfully!"
+all: $(TARGETS)
+	@echo "✓ All Day 3 pointer implementation exercises compiled successfully!"
 
 # Build individual exercise targets
-q1_basic_pointers/pointers: q1_basic_pointers/pointers.c q1_basic_pointers/pointers.h
+q1_basic_float_pointer/basic: q1_basic_float_pointer/basic.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-q2_pointer_functions/swap: q2_pointer_functions/swap.c q2_pointer_functions/swap.h
+q2_swap_function/swap: q2_swap_function/swap.c q2_swap_function/swap.h
 	$(CC) $(CFLAGS) -o $@ $<
 
-q3_pointer_arrays/array_ops: q3_pointer_arrays/array_ops.c q3_pointer_arrays/array_ops.h
+q3_sum_array/sum_array: q3_sum_array/sum_array.c q3_sum_array/sum_array.h
 	$(CC) $(CFLAGS) -o $@ $<
 
-q4_pointer_structs/struct_ops: q4_pointer_structs/struct_ops.c q4_pointer_structs/struct_ops.h
+q4_student_struct/student: q4_student_struct/student.c q4_student_struct/student.h
 	$(CC) $(CFLAGS) -o $@ $<
 
-# Build test executables (link with exercise source, exclude main with UNIT_TEST)
-tests/test_basic_pointers: tests/test_basic_pointers.c q1_basic_pointers/pointers.c q1_basic_pointers/pointers.h
-	$(CC) $(CFLAGS) -DUNIT_TEST -o $@ tests/test_basic_pointers.c q1_basic_pointers/pointers.c
+q5_dynamic_array/dynamic: q5_dynamic_array/dynamic.c
+	$(CC) $(CFLAGS) -o $@ $<
 
-tests/test_pointer_functions: tests/test_pointer_functions.c q2_pointer_functions/swap.c q2_pointer_functions/swap.h
-	$(CC) $(CFLAGS) -DUNIT_TEST -o $@ tests/test_pointer_functions.c q2_pointer_functions/swap.c
-
-tests/test_pointer_arrays: tests/test_pointer_arrays.c q3_pointer_arrays/array_ops.c q3_pointer_arrays/array_ops.h
-	$(CC) $(CFLAGS) -DUNIT_TEST -o $@ tests/test_pointer_arrays.c q3_pointer_arrays/array_ops.c
-
-tests/test_pointer_structs: tests/test_pointer_structs.c q4_pointer_structs/struct_ops.c q4_pointer_structs/struct_ops.h
-	$(CC) $(CFLAGS) -DUNIT_TEST -o $@ tests/test_pointer_structs.c q4_pointer_structs/struct_ops.c -l m  # Note: may need string.h, but gcc handles it
-
-test: $(TESTS)
-	@echo "Running Day 3 Pointers tests..."
-	@./tests/test_basic_pointers || true
-	@./tests/test_pointer_functions || true
-	@./tests/test_pointer_arrays || true
-	@./tests/test_pointer_structs || true
-	@echo "Test run complete. Check outputs above for PASS/FAIL."
+test: $(TARGETS)
+	@echo "Running Day 3 Pointers implementation tests..."
+	@echo "Test 1: Basic Float Pointer"
+	@./q1_basic_float_pointer/basic | grep -q "Correct implementation! ✓" && echo "Q1: ✓ PASS" || echo "Q1: ✗ FAIL"
+	@echo "Test 2: Swap Function"
+	@./q2_swap_function/swap | grep -q "Swap successful! ✓" && echo "Q2: ✓ PASS" || echo "Q2: ✗ FAIL"
+	@echo "Test 3: Sum Array"
+	@./q3_sum_array/sum_array | grep -q "Sum correct! ✓" && echo "Q3: ✓ PASS" || echo "Q3: ✗ FAIL"
+	@echo "Test 4: Student Struct"
+	@./q4_student_struct/student | grep -q "Grade updated! ✓" && echo "Q4: ✓ PASS" || echo "Q4: ✗ FAIL"
+	@echo "Test 5: Dynamic Array"
+	@echo "4" | ./q5_dynamic_array/dynamic | grep -q "Sum: 10" && echo "Q5: ✓ PASS" || echo "Q5: ✗ FAIL"
+	@echo "Test run complete. Check above for PASS/FAIL."
 
 clean:
-	rm -f $(TARGETS) $(TESTS) *.o *~ core
+	rm -f $(TARGETS) *.o *~
 
 .PHONY: all clean test
 

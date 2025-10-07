@@ -22,57 +22,70 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y gcc make libc6-dev gdb
 
-    - name: Test 1 - Basic Pointer Operations
+    - name: Test 1 - Basic Float Pointer
       id: test-1
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: Test 1 - Basic Pointer Operations
+        test-name: Test 1 - Basic Float Pointer
         setup-command: 'make clean && make all'
-        command: ./tests/test_basic_pointers
+        command: ./q1_basic_float_pointer/basic
         input: ''
-        expected-output: '✓ all tests passed!'
+        expected-output: 'Correct implementation! ✓'
         comparison-method: contains
         timeout: 10
-        max-score: 25
+        max-score: 20
 
-    - name: Test 2 - Pointers and Functions
+    - name: Test 2 - Swap Function
       id: test-2
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: Test 2 - Pointers and Functions
+        test-name: Test 2 - Swap Function
         setup-command: 'make clean && make all'
-        command: ./tests/test_pointer_functions
+        command: ./q2_swap_function/swap
         input: ''
-        expected-output: '✓ all tests passed!'
+        expected-output: 'Swap successful! ✓'
         comparison-method: contains
         timeout: 10
-        max-score: 25
+        max-score: 20
 
-    - name: Test 3 - Pointers and Arrays
+    - name: Test 3 - Sum Array
       id: test-3
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: Test 3 - Pointers and Arrays
+        test-name: Test 3 - Sum Array
         setup-command: 'make clean && make all'
-        command: ./tests/test_pointer_arrays
+        command: ./q3_sum_array/sum_array
         input: ''
-        expected-output: '✓ all tests passed!'
+        expected-output: 'Sum correct! ✓'
         comparison-method: contains
         timeout: 10
-        max-score: 25
+        max-score: 20
 
-    - name: Test 4 - Pointers to Structs
+    - name: Test 4 - Student Struct
       id: test-4
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: Test 4 - Pointers to Structs
+        test-name: Test 4 - Student Struct
         setup-command: 'make clean && make all'
-        command: ./tests/test_pointer_structs
+        command: ./q4_student_struct/student
         input: ''
-        expected-output: '✓ all tests passed!'
+        expected-output: 'Grade updated! ✓'
         comparison-method: contains
         timeout: 10
-        max-score: 25
+        max-score: 20
+
+    - name: Test 5 - Dynamic Array
+      id: test-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Test 5 - Dynamic Array
+        setup-command: 'make clean && make all'
+        command: 'echo "4" | ./q5_dynamic_array/dynamic'
+        input: ''
+        expected-output: 'Sum: 10'
+        comparison-method: contains
+        timeout: 10
+        max-score: 20
 
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
@@ -81,6 +94,7 @@ jobs:
         TEST-2_RESULTS: "${{steps.test-2.outputs.result}}"
         TEST-3_RESULTS: "${{steps.test-3.outputs.result}}"
         TEST-4_RESULTS: "${{steps.test-4.outputs.result}}"
+        TEST-5_RESULTS: "${{steps.test-5.outputs.result}}"
       with:
-        runners: test-1,test-2,test-3,test-4
+        runners: test-1,test-2,test-3,test-4,test-5
 
