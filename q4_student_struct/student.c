@@ -17,7 +17,6 @@
  * Expected output:
  * Initial: Name: Alice, Grade: 80
  * Updated: Name: Alice, Grade: 90
- * Grade updated! ✓
  */
 
 #include "student.h"
@@ -32,6 +31,7 @@ void update_grade(Student *s, int new_grade) {
   // Placeholder
 }
 
+#ifndef TEST_MODE
 int main() {
   printf("Exercise 4: Student Struct with Pointers\n");
 
@@ -56,3 +56,4 @@ int main() {
 
   return 0;
 }
+#endif

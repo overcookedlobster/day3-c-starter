@@ -13,36 +13,38 @@
  * After swap: x=2, y=1
  */
 
-#include <stdio.h>
 #include "swap.h"
+#include <stdio.h>
 
 void swap(int *a, int *b) {
-    // TODO: Implement the swap logic here
-    // Hint: Use a temporary variable to hold the value pointed to by one pointer, then assign the value from the other pointer, and finally assign the temporary value to the second pointer. Remember to dereference with *.
+  // TODO: Implement the swap logic here
+  // Hint: Use a temporary variable to hold the value pointed to by one pointer,
+  // then assign the value from the other pointer, and finally assign the
+  // temporary value to the second pointer. Remember to dereference with *.
 
-    // Placeholder
-    printf("Swap function not implemented yet.\n");
+  // Placeholder
 }
 
+#ifndef TEST_MODE
 int main() {
-    printf("Exercise 2: Pointer Swap Function\n");
+  printf("Exercise 2: Pointer Swap Function\n");
 
-    int x = 1;
-    int y = 2;
+  int x = 1;
+  int y = 2;
 
-    printf("Before swap: x=%d, y=%d\n", x, y);
+  printf("Before swap: x=%d, y=%d\n", x, y);
 
-    // TODO: Call swap(&x, &y);
+  // TODO: Call swap(&x, &y);
 
-    printf("After swap: x=%d, y=%d\n", x, y);
+  printf("After swap: x=%d, y=%d\n", x, y);
 
-    // TODO: Add check if swap worked
-    if (x == 2 && y == 1) {
-        printf("Swap successful! ✓\n");
-    } else {
-        printf("Swap failed. Implement the function correctly.\n");
-    }
+  // TODO: Add check if swap worked
+  if (x == 2 && y == 1) {
+    printf("Swap successful! ✓\n");
+  } else {
+    printf("Swap failed. Implement the function correctly.\n");
+  }
 
-    return 0;
+  return 0;
 }
-
+#endif

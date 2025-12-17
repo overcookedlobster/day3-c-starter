@@ -21,35 +21,49 @@
  */
 
 #include <stdio.h>
-// TODO: Include <stdlib.h>
+#include <stdlib.h> // TODO: Make sure this is included for malloc/free
 
 int main() {
-    int n;
-    // TODO: scanf("%d", &n);
+  int n = 0;
 
-    // Placeholder n for testing
-    n = 0; // Replace with actual read
+  // TODO: Read size from user input
+  // scanf("%d", &n);
 
-    if (n <= 0) {
-        printf("Invalid size. Use positive integer.\n");
-        return 1;
-    }
+  // Remove this placeholder when you implement scanf above
+  printf("Implement scanf to read n from input.\n");
+  return 1;
 
-    // TODO: int *arr = malloc(n * sizeof(int));
-    // if (arr == NULL) { printf("Allocation failed!\n"); return 1; }
+  // TODO: Validate input
+  // if (n <= 0) {
+  //     printf("Invalid size.\n");
+  //     return 1;
+  // }
 
-    int *arr = NULL; // Placeholder
+  // TODO: Allocate memory for n integers
+  // int *arr = (int*)malloc(n * sizeof(int));
 
-    // TODO: Fill array: for(int i = 0; i < n; i++) arr[i] = i + 1;
+  // TODO: Check if allocation succeeded
+  // if (arr == NULL) {
+  //     printf("Allocation failed!\n");
+  //     return 1;
+  // }
 
-    // TODO: Sum: int sum = 0; for(int i = 0; i < n; i++) sum += arr[i];
+  // TODO: Fill the array with values 1 to n
+  // for (int i = 0; i < n; i++) {
+  //     arr[i] = i + 1;
+  // }
 
-    int sum = 0; // Placeholder
+  // TODO: Calculate sum using pointer arithmetic or array indexing
+  // int sum = 0;
+  // for (int i = 0; i < n; i++) {
+  //     sum += arr[i];  // or: sum += *(arr + i);
+  // }
 
-    printf("Sum: %d\n", sum);
+  // TODO: Print the sum
+  // printf("Sum: %d\n", sum);
 
-    // TODO: free(arr);
+  // TODO: Free the allocated memory
+  // free(arr);
 
-    return 0;
+  // return 0;  // Uncomment when implemented
 }
-
