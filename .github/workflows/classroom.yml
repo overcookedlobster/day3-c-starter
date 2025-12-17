@@ -1,14 +1,11 @@
 name: Autograding Tests
-
 on:
   - push
   - repository_dispatch
-
 permissions:
   checks: write
   actions: read
   contents: read
-
 jobs:
   run-autograding-tests:
     runs-on: ubuntu-latest
@@ -22,71 +19,66 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y gcc make libc6-dev gdb
 
+    # Build all exercises and tests once
+    - name: Build all exercises
+      run: make clean && make all && make test > test_output.txt 2>&1 || true
+
+    # Test 1 - Basic Float Pointer
     - name: Test 1 - Basic Float Pointer
       id: test-1
-      uses: classroom-resources/autograding-io-grader@v1
+      uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Test 1 - Basic Float Pointer
-        setup-command: 'make clean && make all'
-        command: ./q1_basic_float_pointer/basic
-        input: ''
-        expected-output: 'Correct implementation! ✓'
-        comparison-method: contains
+        setup-command: ''
+        command: ./tests/test_q1
         timeout: 10
         max-score: 20
 
+    # Test 2 - Swap Function
     - name: Test 2 - Swap Function
       id: test-2
-      uses: classroom-resources/autograding-io-grader@v1
+      uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Test 2 - Swap Function
-        setup-command: 'make clean && make all'
-        command: ./q2_swap_function/swap
-        input: ''
-        expected-output: 'Swap successful! ✓'
-        comparison-method: contains
+        setup-command: ''
+        command: ./tests/test_q2
         timeout: 10
         max-score: 20
 
+    # Test 3 - Sum Array
     - name: Test 3 - Sum Array
       id: test-3
-      uses: classroom-resources/autograding-io-grader@v1
+      uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Test 3 - Sum Array
-        setup-command: 'make clean && make all'
-        command: ./q3_sum_array/sum_array
-        input: ''
-        expected-output: 'Sum correct! ✓'
-        comparison-method: contains
+        setup-command: ''
+        command: ./tests/test_q3
         timeout: 10
         max-score: 20
 
+    # Test 4 - Student Struct
     - name: Test 4 - Student Struct
       id: test-4
-      uses: classroom-resources/autograding-io-grader@v1
+      uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Test 4 - Student Struct
-        setup-command: 'make clean && make all'
-        command: ./q4_student_struct/student
-        input: ''
-        expected-output: 'Grade updated! ✓'
-        comparison-method: contains
+        setup-command: ''
+        command: ./tests/test_q4
         timeout: 10
         max-score: 20
 
+    # Test 5 - Dynamic Array
     - name: Test 5 - Dynamic Array
       id: test-5
-      uses: classroom-resources/autograding-io-grader@v1
+      uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Test 5 - Dynamic Array
-        setup-command: 'make clean && make all'
-        command: 'echo "4" | ./q5_dynamic_array/dynamic'
-        input: ''
-        expected-output: 'Sum: 10'
-        comparison-method: contains
+        setup-command: ''
+        command: ./tests/test_q5
         timeout: 10
         max-score: 20
 
+    # Report results
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -97,4 +89,3 @@ jobs:
         TEST-5_RESULTS: "${{steps.test-5.outputs.result}}"
       with:
         runners: test-1,test-2,test-3,test-4,test-5
-

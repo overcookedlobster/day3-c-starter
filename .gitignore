@@ -1,0 +1,33 @@
+# Compiled executables
+q1_basic_float_pointer/basic
+q2_swap_function/swap
+q3_sum_array/sum_array
+q4_student_struct/student
+q5_dynamic_array/dynamic
+
+# Test executables
+tests/test_q1
+tests/test_q2
+tests/test_q3
+tests/test_q4
+tests/test_q5
+
+# Object files
+*.o
+
+# Editor backup files
+*~
+*.swp
+*.swo
+
+# Mac files
+.DS_Store
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Temporary files
+*.tmp
